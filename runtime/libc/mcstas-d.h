@@ -1,5 +1,5 @@
-#ifndef MCSTAS_R_H
-#define MCSTAS_R_H 
+#ifndef MCSTAS_D_H
+#define MCSTAS_D_H 
 
 #ifndef MCCODE_STRING
 #  define MCCODE_STRING "McStas"
@@ -41,4 +41,4 @@
 #  define FLAVOR_LIB "nlib"
 #endif
 
-#endif /* MCSTAS_R_H */
+#endif /* MCSTAS_D_H */

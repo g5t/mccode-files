@@ -1,5 +1,5 @@
-#ifndef MCXTRACE_R_H
-#define MCXTRACE_R_H 
+#ifndef MCXTRACE_D_H
+#define MCXTRACE_D_H 
 
 #ifndef MCCODE_STRING
 #  define MCCODE_STRING "McXtrace"
@@ -41,4 +41,4 @@
 #  define FLAVOR_LIB "xlib"
 #endif
 
-#endif /* MCXTRACE_R_H */
+#endif /* MCXTRACE_D_H */
