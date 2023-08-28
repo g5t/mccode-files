@@ -231,9 +231,6 @@ DECLARE
   // set to 1 for some debugging info
   int dbg;
   int dbgn;
-
-}
-  
 %}
 INITIALIZE
   %{
