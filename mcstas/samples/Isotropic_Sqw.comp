@@ -1553,8 +1553,8 @@ struct Sqw_Data_struct *Sqw_readfile(
   /* display some warnings about the computed temperature */
   if (T > 3000) T=0; /* unrealistic */
   if (!T_file && T) {
-    MPI_MASTER(
     if (Sqw->verbose_output > 0) {
+    MPI_MASTER(
       printf(  "Isotropic_Sqw: %s: Temperature computed from S(q,w) data from %s is T=%g [K].\n",
         Sqw->compname, file, T);
     );
