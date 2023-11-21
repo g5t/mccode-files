@@ -410,7 +410,8 @@ int any_set(int n, ...);
 /* the body of this function depends on component instances, and is cogen'd */
 void* _getvar_parameters(char* compname);
 
-int _getcomp_index(char* compname);
+// return a long to match the _index of a component
+long _getcomp_index(char* compname);
 
 /* Note: The two-stage approach to COMP_GETPAR is NOT redundant; without it,
 * after #define C sample, COMP_GETPAR(C,x) would refer to component C, not to
