@@ -92,6 +92,13 @@ size_t str_len(const char *s);
 #  define NEED_TYPES_H
 #endif
 
+// mingw via m2w64-gcc conda package
+#if (defined(_WIN32) || defined(__WIN32__))
+#  include <direct.h>
+#  include <process.h>
+#  define mkdir(x, y) _mkdir(x)
+#endif
+
 #ifdef NEED_STAT_H
 #  include <sys/stat.h>
 #endif
