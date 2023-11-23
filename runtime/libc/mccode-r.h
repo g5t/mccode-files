@@ -549,7 +549,7 @@ double _randnorm2(randstate_t* state);
 // Mersenne Twister rng
 unsigned long mt_random(void);
 void mt_srandom (unsigned long x);
-void mt_srandom_empty();
+void mt_srandom_empty(void);
 
 // KISS rng
 #pragma acc routine

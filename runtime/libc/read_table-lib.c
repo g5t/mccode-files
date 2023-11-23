@@ -625,7 +625,7 @@ void *Table_File_List_store(t_Table *tab){
     }
     if (count_invalid)
     {
-      fprintf(stderr,"Warning: Read_Table :%s %s Data has %i invalid lines (*****). Ignored.\n",
+      fprintf(stderr,"Warning: Read_Table :%s %s Data has %li invalid lines (*****). Ignored.\n",
       (Table->filename[0] != '\0' ? Table->filename : ""),
         (!block_number ? " catenated" : ""),
         count_invalid);
@@ -957,7 +957,7 @@ double Table_Value2d(t_Table Table, double X, double Y)
 
     if (Table.header && strlen(Table.header)) {
       char *header;
-      int  i;
+      size_t i;
       header = malloc(80);
       if (!header) return(ret);
       for (i=0; i<80; header[i++]=0);

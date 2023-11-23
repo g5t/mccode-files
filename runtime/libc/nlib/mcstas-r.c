@@ -51,7 +51,7 @@ int (*mcMagneticField) (double, double, double, double,
 * mcsetstate: transfer parameters into global McStas variables
 *******************************************************************************/
 _class_particle mcsetstate(double x, double y, double z, double vx, double vy, double vz,
-			   double t, double sx, double sy, double sz, double p, int mcgravitation, void *mcMagnet, int mcallowbackprop)
+			   double t, double sx, double sy, double sz, double p, int grav, void *mcMagnet, int backprop)
 {
   _class_particle mcneutron;
 
@@ -66,9 +66,9 @@ _class_particle mcsetstate(double x, double y, double z, double vx, double vy, d
   mcneutron.sy = sy;
   mcneutron.sz = sz;
   mcneutron.p  = p;
-  mcneutron.mcgravitation = mcgravitation;
+  mcneutron.mcgravitation = grav;
   mcneutron.mcMagnet = mcMagnet;
-  mcneutron.allow_backprop = mcallowbackprop;
+  mcneutron.allow_backprop = backprop;
   mcneutron._uid       = 0;
   mcneutron._index     = 1;
   mcneutron._absorbed  = 0;

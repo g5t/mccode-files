@@ -1453,8 +1453,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
 *******************************************************************************/
 static char *strcpy_valid(char *valid, char *original)
 {
-  long i;
-  int  n=CHAR_BUF_LENGTH; /* max length of valid names */
+  size_t i;
+  size_t n=CHAR_BUF_LENGTH; /* max length of valid names */
 
   if (original == NULL || !strlen(original)) return(NULL);
 
@@ -2142,7 +2142,7 @@ FILE *siminfo_init(FILE *f)
 /*******************************************************************************
 *   siminfo_close:  close SIM
 *******************************************************************************/
-void siminfo_close()
+void siminfo_close(void)
 {
 #ifdef USE_MPI
   if(mpi_node_rank == mpi_node_root) {
@@ -2461,7 +2461,7 @@ unsigned long long int mcget_ncount(void)
 
 /* mcget_run_num: get curent number of rays */
 /* Within the TRACE scope we are now using _particle->uid directly */
-unsigned long long int mcget_run_num() // shuld be (_class_particle* _particle) somehow
+unsigned long long int mcget_run_num(void) // shuld be (_class_particle* _particle) somehow
 {
   /* This function only remains for the few cases outside TRACE where we need to know
      the number of simulated particles */
@@ -3390,7 +3390,7 @@ int solve_2nd_order(double *t0, double *t1, double A, double B, double C){
  ******************************************************************************/
 void _randvec_target_circle(double *xo, double *yo, double *zo, double *solid_angle,
         double xi, double yi, double zi, double radius,
-        _class_particle* _particle)
+        _class_particle* unused_particle) // avoid shadowing global _particle
 {
   double l2, phi, theta, nx, ny, nz, xt, yt, zt, xu, yu, zu;
 
@@ -3456,7 +3456,7 @@ void _randvec_target_circle(double *xo, double *yo, double *zo, double *solid_an
  *******************************************************************************/
 void _randvec_target_rect_angular(double *xo, double *yo, double *zo, double *solid_angle,
         double xi, double yi, double zi, double width, double height, Rotation A,
-        _class_particle* _particle)
+        _class_particle* unused_particle)
 {
   double theta, phi, nx, ny, nz, xt, yt, zt, xu, yu, zu;
   Coords tmp;
@@ -3533,7 +3533,7 @@ void _randvec_target_rect_real(double *xo, double *yo, double *zo, double *solid
         double xi, double yi, double zi,
         double width, double height, Rotation A,
         double lx, double ly, double lz, int order,
-        _class_particle* _particle)
+        _class_particle* unused_particle)
 {
   double dx, dy, dist, dist_p, nx, ny, nz, mx, my, mz, n_norm, m_norm;
   double cos_theta;
@@ -3688,7 +3688,7 @@ unsigned long mt[N]; /* the array for the state vector  */
 int mti=N+1; /* mti==N+1 means mt[N] is not initialized */
 
 // required for common rng alg interface (see RNG_ALG usage in mccode-r.h)
-void mt_srandom_empty() {}
+void mt_srandom_empty(void) {}
 
 // initializes mt[N] with a seed
 void mt_srandom(unsigned long s)
@@ -3710,7 +3710,7 @@ void mt_srandom(unsigned long s)
    key_length is its length. */
 void init_by_array(unsigned long init_key[], unsigned long key_length)
 {
-    int i, j, k;
+    unsigned long i, j, k; // avoid narrowing conversions and signed comparison errors
     mt_srandom(19650218UL);
     i=1; j=0;
     k = (N>key_length ? N : key_length);
